@@ -762,12 +762,12 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .footer-social {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .footer-social a {
@@ -783,6 +783,21 @@ footer {
 .copyright {
     color: #444;
     font-size: 0.9rem;
+}
+
+.footer-logo {
+    margin-bottom: 0;
+}
+
+.footer-logo img {
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-logo img:hover {
+    opacity: 1;
 }
 
 /* 
