@@ -1,9 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupNavbarScroll();
+    setupMobileMenu();
     startLiveClock();
-    runTypewriterAnimation();
     handleContactForm();
 });
+
+function setupMobileMenu() {
+    const mobileBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileBtn && navLinks) {
+        mobileBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+
+            // Toggle icon
+            const icon = mobileBtn.querySelector('i');
+            if (icon) {
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+}
 
 function handleContactForm() {
     const form = document.querySelector('.contact-form');
@@ -92,53 +127,4 @@ function startLiveClock() {
     setInterval(updateClock, 1000);
 }
 
-function runTypewriterAnimation() {
-    const codeElement = document.getElementById('typewriter');
 
-    if (!codeElement) return;
-
-    // The text to type out character by character
-    const plainText = `class Levon:
-    def __init__(self):
-        self.name = "Levon Malkhasian"
-        self.role = "Software Engineer"
-        self.location = "Los Angeles, CA"
-
-    def sleep(self):
-        return None
-
-    def learning(self):
-        return "Always."`;
-
-    // The final HTML with syntax highlighting to swap in
-    const finalHtml = [
-        `<span class="keyword">class</span> <span class="function">Levon</span>:`,
-        `    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):`,
-        `        <span class="variable">self</span>.name = <span class="string">"Levon Malkhasian"</span>`,
-        `        <span class="variable">self</span>.role = <span class="string">"Software Engineer"</span>`,
-        `        <span class="variable">self</span>.location = <span class="string">"Los Angeles, CA"</span>`,
-        ``,
-        `    <span class="keyword">def</span> <span class="function">sleep</span>(<span class="variable">self</span>):`,
-        `        <span class="keyword">return</span> <span class="keyword">None</span>`,
-        ``,
-        `    <span class="keyword">def</span> <span class="function">learning</span>(<span class="variable">self</span>):`,
-        `        <span class="keyword">return</span> <span class="string">"Always."</span>`
-    ].join('\n');
-
-    let charIndex = 0;
-    const typingSpeed = 15; // ms
-    const initialDelay = 1000; // ms
-
-    function typeChar() {
-        if (charIndex < plainText.length) {
-            codeElement.textContent += plainText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeChar, typingSpeed);
-        } else {
-            // Apply full syntax highlighting once typing is complete
-            codeElement.innerHTML = finalHtml;
-        }
-    }
-
-    setTimeout(typeChar, initialDelay);
-}

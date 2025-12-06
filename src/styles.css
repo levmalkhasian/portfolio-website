@@ -1,5 +1,4 @@
 :root {
-    /* Minimalist Palette */
     --bg-main: #0a0a0a;
     --bg-surface: #111111;
     --text-primary: #ffffff;
@@ -68,11 +67,7 @@ body {
     color: var(--bg-main);
 }
 
-/* 
-========================================
-   NAVBAR
-========================================
-*/
+/* NAVBAR */
 #navbar {
     position: fixed;
     top: 0;
@@ -111,7 +106,6 @@ body {
     height: 100%;
     object-fit: contain;
     filter: brightness(0) invert(1);
-    /* Force white */
     opacity: 0.9;
     transition: opacity 0.3s ease;
 }
@@ -162,11 +156,7 @@ body {
     cursor: pointer;
 }
 
-/* 
-========================================
-   HERO SECTION
-========================================
-*/
+/* HERO */
 #landing {
     min-height: 100vh;
     display: flex;
@@ -316,23 +306,12 @@ body {
     color: #d4d4d4;
 }
 
-#typewriter::after {
-    content: '';
-    display: inline-block;
-    width: 2px;
-    height: 15px;
-    background-color: #d4d4d4;
-    margin-left: 1px;
-    animation: blink 1s infinite;
-    vertical-align: middle;
-}
-
 pre {
     margin: 0;
     white-space: pre-wrap;
 }
 
-/* Syntax Highlighting */
+/* Syntax */
 .keyword {
     color: var(--code-keyword);
 }
@@ -349,6 +328,16 @@ pre {
     color: var(--code-var);
 }
 
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 15px;
+    background-color: #d4d4d4;
+    margin-left: 1px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
 @keyframes blink {
 
     0%,
@@ -362,11 +351,9 @@ pre {
     }
 }
 
-/* 
-========================================
-   SECTIONS GENERAL
-========================================
-*/
+
+
+/* SECTIONS */
 section {
     padding: 8rem 0;
 }
@@ -389,9 +376,7 @@ section {
 }
 
 /* 
-========================================
-   ABOUT SECTION (BENTO GRID)
-========================================
+ABOUT
 */
 .bento-grid {
     display: grid;
@@ -533,12 +518,7 @@ section {
     margin-bottom: 2rem;
 }
 
-/* 
-========================================
-   SKILLS SECTION
-========================================
-*/
-/* Tech Spec Cards */
+/* SKILLS */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
@@ -558,7 +538,6 @@ section {
     transition: all 0.3s ease;
     cursor: default;
     aspect-ratio: 1;
-    /* Keep perfect squares */
     width: 100%;
 }
 
@@ -591,11 +570,7 @@ section {
     color: var(--text-primary);
 }
 
-/* 
-========================================
-   PROJECTS SECTION
-========================================
-*/
+/* PROJECTS */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -671,11 +646,7 @@ section {
     border-radius: var(--radius-sm);
 }
 
-/* 
-========================================
-   CONTACT SECTION
-========================================
-*/
+/* CONTACT */
 .contact-wrapper {
     max-width: 600px;
 }
@@ -747,11 +718,7 @@ section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* 
-========================================
-   FOOTER
-========================================
-*/
+/* FOOTER */
 footer {
     padding: 4rem 0;
     border-top: 1px solid var(--border);
@@ -800,11 +767,7 @@ footer {
     opacity: 1;
 }
 
-/* 
-========================================
-   ANIMATIONS
-========================================
-*/
+
 @keyframes fadeUp {
     from {
         opacity: 0;
@@ -817,11 +780,7 @@ footer {
     }
 }
 
-/* 
-========================================
-   RESPONSIVE
-========================================
-*/
+
 @media (max-width: 900px) {
     .hero-grid {
         grid-template-columns: 1fr;
@@ -830,9 +789,30 @@ footer {
         grid-template-rows: auto;
     }
 
+    /* Fix About Me Grid on Mobile */
+    .bento-grid {
+        grid-template-columns: 1fr;
+    }
+
     .bio-card {
         grid-column: span 1;
-        grid-row: span 1;
+        grid-row: auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .bio-list li {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Center Tech Stack */
+    .tech-icons {
+        justify-content: center;
+    }
+
+    .window-body {
+        text-align: left;
     }
 }
 
@@ -855,12 +835,65 @@ footer {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: right 0.3s ease;
+        transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         border-left: 1px solid var(--border);
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links.active {
         right: 0;
+    }
+
+    /* Mobile Menu Item Animations */
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Staggered Delay */
+    .nav-links.active li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    .nav-links.active li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .nav-links.active li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    .nav-links.active li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+
+    .nav-links.active li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav-links a {
+        font-size: 1.15rem;
+        display: block;
+        padding: 0.75rem;
+        transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    /* Hover works on desktop/mouse, Active works better for touch */
+    .nav-links a:hover,
+    .nav-links a:active {
+        transform: scale(1.1);
+        color: var(--text-primary);
+    }
+
+    .nav-links a:active {
+        transform: scale(0.95);
+        /* Little click effect */
     }
 
     .mobile-menu-btn {
