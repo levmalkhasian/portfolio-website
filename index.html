@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Levon Malkhasian</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-items">
+            <a href="#" class="logo">
+                <img src="images/levsignature.png" alt="Signature Logo" class="signature-img">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="resume">Resume</a></li>
+            </ul>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="landing">
+        <div class="home-hero">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-greeting">Hey! I'm Lev.</span>
+                    <h1>Building software<br>with a purpose.</h1>
+                    <p>As a software engineer, I am passionate about creating accessible, user-centered products that
+                        solve real-world problems.</p>
+                    <div class="hero-tech-stack">
+                        <span class="tech-label">Tech Stack</span>
+                        <div class="tech-icons">
+                            <i class="fab fa-python" title="Python"></i>
+                            <i class="fab fa-js" title="JavaScript"></i>
+                            <i class="fab fa-github" title="GitHub"></i>
+                            <i class="fab fa-aws" title="AWS"></i>
+                            <i class="fab fa-docker" title="Docker"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-controls">
+                                <div class="control red"></div>
+                                <div class="control yellow"></div>
+                                <div class="control green"></div>
+                            </div>
+                            <div class="window-title">main.py</div>
+                        </div>
+                        <div class="window-body">
+                            <code id="typewriter"></code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-card bio-card">
+                    <h3>Hey, I'm Levon! 👋</h3>
+                    <ul class="bio-list">
+                        <li>📚 Studying Computer Science at Cal Poly Pomona</li>
+                        <li>👯 Looking to collaborate on open source projects</li>
+                        <li>⚡ Fun fact: I love playing golf and tennis</li>
+                        <li>📫 <a href="mailto:levonmalkhasian@gmail.com" class="bio-link">levonmalkhasian@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bento-card location-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Based in</h3>
+                    <p><strong>Los Angeles, CA</strong></p>
+                    <div id="la-time" class="live-clock">00:00:00 PST</div>
+                </div>
+
+                <div class="bento-card education-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p><strong>Cal Poly Pomona</strong></p>
+                    <span>Computer Science</span>
+                </div>
+            </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <!-- Python -->
+                <div class="tech-card">
+                    <i class="fab fa-python" style="color: #3776ab;"></i>
+                    <span class="tech-name">Python</span>
+                </div>
+
+                <!-- React -->
+                <div class="tech-card">
+                    <i class="fab fa-react" style="color: #61dafb;"></i>
+                    <span class="tech-name">React</span>
+                </div>
+
+                <!-- Node.js -->
+                <div class="tech-card">
+                    <i class="fab fa-node-js" style="color: #339933;"></i>
+                    <span class="tech-name">Node.js</span>
+                </div>
+
+                <!-- TypeScript -->
+                <div class="tech-card">
+                    <i class="fab fa-js" style="color: #3178C6;"></i>
+                    <span class="tech-name">TypeScript</span>
+                </div>
+
+                <!-- SQL -->
+                <div class="tech-card">
+                    <i class="fas fa-database" style="color: #00758f;"></i>
+                    <span class="tech-name">SQL</span>
+                </div>
+
+                <!-- MongoDB -->
+                <div class="tech-card">
+                    <i class="fas fa-database" style="color: #47A248;"></i>
+                    <span class="tech-name">MongoDB</span>
+                </div>
+
+                <!-- AWS -->
+                <div class="tech-card">
+                    <i class="fab fa-aws" style="color: #FF9900;"></i>
+                    <span class="tech-name">AWS</span>
+                </div>
+
+                <!-- Git -->
+                <div class="tech-card">
+                    <i class="fab fa-git-alt" style="color: #f05032;"></i>
+                    <span class="tech-name">Git</span>
+                </div>
+
+                <!-- Docker -->
+                <div class="tech-card">
+                    <i class="fab fa-docker" style="color: #2496ed;"></i>
+                    <span class="tech-name">Docker</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="far fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>AI Task Manager</h3>
+                    <p>A smart task management application that uses OpenAI's GPT-3 to prioritize and categorize tasks
+                        automatically.</p>
+                    <div class="project-tech">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>OpenAI</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="far fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>E-Commerce Dashboard</h3>
+                    <p>Real-time analytics dashboard for e-commerce platforms with data visualization and inventory
+                        management.</p>
+                    <div class="project-tech">
+                        <span>Vue.js</span>
+                        <span>Firebase</span>
+                        <span>D3.js</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="far fa-folder folder-icon"></i>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <h3>Portfolio v1</h3>
+                    <p>My first portfolio website built with vanilla HTML/CSS and JavaScript. Fully responsive and
+                        accessible.</p>
+                    <div class="project-tech">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+            </div>
+            <div class="contact-wrapper">
+                <form class="contact-form" action="https://formspree.io/f/mnnezwzo" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5"
+                            placeholder="Hi! I'd like to reach out regarding..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="copyright">&copy; 2025 Levon Malkhasian. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="src/script.js"></script>
+</body>
+
+</html>
