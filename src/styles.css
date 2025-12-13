@@ -982,12 +982,6 @@ footer {
         justify-content: center;
     }
 
-    .bio-row {
-        /* On mobile, keep row layout but ensure text fits */
-    }
-
-    /* Center the tech icons wrapper */
-
     /* Center Tech Stack */
     .tech-icons {
         justify-content: center;
