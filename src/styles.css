@@ -359,7 +359,7 @@ section {
 }
 
 .section-header {
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .section-title {
@@ -448,29 +448,109 @@ ABOUT
     font-weight: 500;
 }
 
+/* Modern Bio Styles */
+.bio-card h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.bio-card h3 .wave-emoji {
+    display: inline-block;
+    animation: wave 2.5s infinite;
+    transform-origin: 70% 70%;
+    font-size: 1.7rem;
+    /* Force larger size */
+}
+
+@keyframes wave {
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
+}
+
 .bio-list {
-    list-style: none;
-    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    text-align: left;
 }
 
 .bio-list li {
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    list-style-type: disc;
+    /* Bullet points back */
 }
 
-.bio-link {
+.bio-list li strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.bio-email {
+    list-style-type: none !important;
+    margin-top: 1.5rem;
+    margin-left: -1.5rem;
+    /* Offset ul padding to center correctly */
+    text-align: left;
+}
+
+.bio-email a {
     color: var(--text-primary);
     text-decoration: underline;
     transition: color 0.3s ease;
+    font-size: 1.1rem;
 }
 
-.bio-link:hover {
+.bio-email a:hover {
     color: var(--text-secondary);
+}
+
+.bio-email-btn i {
+    color: var(--bg-main) !important;
+    font-size: 1.1rem !important;
+    margin: 0 !important;
+    opacity: 1 !important;
+}
+
+.bio-email-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 .location-card,
@@ -646,7 +726,103 @@ ABOUT
     border-radius: var(--radius-sm);
 }
 
-/* CONTACT */
+/* 
+========================================
+   EXPERIENCE SECTION
+========================================
+*/
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 5px;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 60px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Dot */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg-main);
+    /* Cutout effect center */
+    border: 2px solid var(--text-primary);
+    border-radius: 50%;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.timeline-item:hover::after {
+    background: var(--text-primary);
+}
+
+.timeline-date {
+    font-family: var(--font-code);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+}
+
+.timeline-content h3 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.timeline-content h4 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.timeline-content p,
+.timeline-content ul {
+    color: #ccc;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.timeline-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.timeline-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* 
+========================================
+   CONTACT SECTION
+========================================
+*/
 .contact-wrapper {
     max-width: 600px;
 }
@@ -796,15 +972,21 @@ footer {
 
     .bio-card {
         grid-column: span 1;
-        grid-row: auto;
-        text-align: center;
-        align-items: center;
+        grid-row: span 1;
+        padding: 2rem;
+        /* text-align: left; keep text align left for specific components */
     }
 
-    .bio-list li {
-        justify-content: center;
+    .bio-card h3 {
         text-align: center;
+        justify-content: center;
     }
+
+    .bio-row {
+        /* On mobile, keep row layout but ensure text fits */
+    }
+
+    /* Center the tech icons wrapper */
 
     /* Center Tech Stack */
     .tech-icons {
@@ -813,6 +995,10 @@ footer {
 
     .window-body {
         text-align: left;
+    }
+
+    .bio-email {
+        text-align: center;
     }
 }
 
