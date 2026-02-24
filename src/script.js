@@ -1,9 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupNavbarScroll();
     setupMobileMenu();
+    animateHeroSnippet();
     startLiveClock();
     handleContactForm();
 });
+
+function animateHeroSnippet() {
+    const snippet = document.getElementById('code-snippet');
+    if (!snippet || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cursorHTML = '<span class="cursor"></span>';
+    const snippetHTML = snippet.innerHTML.trimEnd();
+    const contentWithoutCursor = snippetHTML.replace(cursorHTML, '');
+    const lines = contentWithoutCursor.split('\n');
+
+    const animatedLines = lines.map((line, index) => {
+        const safeLine = line.length ? line : '&nbsp;';
+        const cursor = index === lines.length - 1 ? cursorHTML : '';
+        return `<span class="code-line" style="--line-delay:${index * 0.14}s">${safeLine}${cursor}</span>`;
+    });
+
+    snippet.innerHTML = animatedLines.join('');
+}
 
 function setupMobileMenu() {
     const mobileBtn = document.querySelector('.mobile-menu-btn');
