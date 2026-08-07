@@ -1,0 +1,665 @@
+/*
+========================================
+   LIVE GITHUB ACTIVITY WIDGET
+   Self-contained. Uses the site design tokens
+   (--bg-surface, --border, --text-*, --radius-*, --font-*)
+   with hard fallbacks so the file works standalone.
+========================================
+*/
+
+.gh-activity {
+    /* Heatmap geometry — tweak these two to resize the whole graph */
+    --gh-cell: 15px;
+    --gh-gap: 3px;
+
+    /* Monochrome intensity ramp, tuned for #0a0a0a / #111 surfaces */
+    --gh-l0: rgba(255, 255, 255, 0.07);
+    --gh-l1: rgba(255, 255, 255, 0.18);
+    --gh-l2: rgba(255, 255, 255, 0.36);
+    --gh-l3: rgba(255, 255, 255, 0.62);
+    --gh-l4: rgba(255, 255, 255, 0.92);
+}
+
+/* ---------- Card shell: matches .project-card ---------- */
+.gh-card {
+    background: var(--bg-surface, #111111);
+    border: 1px solid var(--border, #222222);
+    border-radius: var(--radius-md, 12px);
+    padding: 2.5rem;
+    transition: border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.gh-card:hover {
+    border-color: #333;
+}
+
+/* ---------- Header ---------- */
+.gh-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.gh-head-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+}
+
+.gh-mark {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    color: var(--text-primary, #ffffff);
+    opacity: 0.9;
+}
+
+.gh-mark svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.gh-titles h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary, #ffffff);
+    line-height: 1.3;
+    margin: 0;
+}
+
+.gh-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-code, 'Consolas', 'Monaco', monospace);
+    font-size: 0.78rem;
+    color: var(--text-secondary, #888888);
+    margin-top: 0.15rem;
+}
+
+.gh-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #27c93f;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.5);
+    animation: ghPulse 2.6s var(--ease, cubic-bezier(0.16, 1, 0.3, 1)) infinite;
+}
+
+.gh-dot[data-state="stale"] {
+    background: #ffbd2e;
+    animation: none;
+}
+
+.gh-dot[data-state="off"] {
+    background: #444;
+    animation: none;
+}
+
+@keyframes ghPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.45);
+    }
+
+    50% {
+        box-shadow: 0 0 0 5px rgba(39, 201, 63, 0);
+    }
+}
+
+.gh-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+    font-family: var(--font-code, monospace);
+    font-size: 0.85rem;
+    color: var(--text-primary, #ffffff);
+    text-decoration: none;
+    border: 1px solid var(--border, #222222);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-sm, 4px);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.gh-profile:hover {
+    background: var(--text-primary, #ffffff);
+    color: var(--bg-main, #0a0a0a);
+    border-color: var(--text-primary, #ffffff);
+}
+
+.gh-profile svg {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+}
+
+/* ---------- Stat tiles ---------- */
+.gh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+    list-style: none;
+    padding: 0;
+}
+
+.gh-stat {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border, #222222);
+    border-radius: var(--radius-sm, 4px);
+    padding: 1rem 1.1rem;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.gh-stat:hover {
+    border-color: #333;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.gh-stat-value {
+    display: block;
+    font-size: 1.65rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text-primary, #ffffff);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+}
+
+.gh-stat-label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-secondary, #888888);
+    margin-top: 0.35rem;
+    font-weight: 500;
+}
+
+/* ---------- Heatmap ---------- */
+/* These are <section> elements, so they must opt out of the site-wide
+   `section { padding: 8rem 0 }` rule. */
+.gh-graph-block,
+.gh-recent {
+    padding: 0;
+    margin: 0;
+}
+
+.gh-graph-block {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border, #222222);
+}
+
+/* No dangling rule when the commit list could not be loaded */
+.gh-graph-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.gh-graph-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+.gh-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+    color: var(--text-secondary, #888888);
+    font-weight: 500;
+}
+
+.gh-legend {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--text-secondary, #888888);
+}
+
+.gh-legend-cell {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--gh-l0);
+}
+
+.gh-graph-wrap {
+    position: relative;
+}
+
+.gh-scroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #333 transparent;
+}
+
+.gh-scroll::-webkit-scrollbar {
+    height: 5px;
+}
+
+.gh-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gh-scroll::-webkit-scrollbar-thumb {
+    background: #2c2c2c;
+    border-radius: 3px;
+}
+
+.gh-graph {
+    display: flex;
+    gap: 6px;
+    width: max-content;
+    padding-top: 1.15rem;
+    /* room for the absolutely-placed month labels */
+    position: relative;
+}
+
+.gh-daycol {
+    display: grid;
+    grid-template-rows: repeat(7, var(--gh-cell));
+    gap: var(--gh-gap);
+    flex-shrink: 0;
+}
+
+.gh-daycol span {
+    font-size: 0.62rem;
+    line-height: var(--gh-cell);
+    color: var(--text-secondary, #888888);
+    padding-right: 2px;
+}
+
+.gh-weeks {
+    display: grid;
+    grid-template-rows: repeat(7, var(--gh-cell));
+    grid-auto-flow: column;
+    grid-auto-columns: var(--gh-cell);
+    gap: var(--gh-gap);
+    position: relative;
+}
+
+.gh-months {
+    position: absolute;
+    top: -1.2rem;
+    left: 0;
+    height: 1.15rem;
+    width: 100%;
+    pointer-events: none;
+}
+
+.gh-month {
+    position: absolute;
+    top: 0;
+    font-size: 0.68rem;
+    color: var(--text-secondary, #888888);
+    white-space: nowrap;
+}
+
+.gh-cell {
+    width: var(--gh-cell);
+    height: var(--gh-cell);
+    border-radius: 2px;
+    background: var(--gh-l0);
+    transition: transform 0.15s var(--ease, ease), outline-color 0.15s ease;
+    outline: 1px solid transparent;
+    outline-offset: 0;
+}
+
+.gh-cell[data-level="1"] {
+    background: var(--gh-l1);
+}
+
+.gh-cell[data-level="2"] {
+    background: var(--gh-l2);
+}
+
+.gh-cell[data-level="3"] {
+    background: var(--gh-l3);
+}
+
+.gh-cell[data-level="4"] {
+    background: var(--gh-l4);
+}
+
+.gh-cell.gh-pad {
+    background: transparent;
+}
+
+.gh-cell:hover {
+    outline-color: rgba(255, 255, 255, 0.55);
+}
+
+.gh-legend-cell[data-level="1"] {
+    background: var(--gh-l1);
+}
+
+.gh-legend-cell[data-level="2"] {
+    background: var(--gh-l2);
+}
+
+.gh-legend-cell[data-level="3"] {
+    background: var(--gh-l3);
+}
+
+.gh-legend-cell[data-level="4"] {
+    background: var(--gh-l4);
+}
+
+/* Entry animation for the grid */
+.gh-graph[data-anim="on"] .gh-cell {
+    opacity: 0;
+    animation: ghFadeCell 0.4s var(--ease, ease) forwards;
+}
+
+@keyframes ghFadeCell {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Tooltip */
+.gh-tip {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    background: #000;
+    border: 1px solid #333;
+    border-radius: var(--radius-sm, 4px);
+    padding: 0.4rem 0.65rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: var(--text-primary, #ffffff);
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transition: opacity 0.15s ease;
+}
+
+.gh-tip[data-show="1"] {
+    opacity: 1;
+}
+
+.gh-tip b {
+    font-weight: 600;
+}
+
+.gh-tip i {
+    font-style: normal;
+    color: var(--text-secondary, #888888);
+}
+
+/* ---------- Recent activity list ---------- */
+.gh-recent-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.gh-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.gh-item a {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.85rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: var(--radius-sm, 4px);
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s var(--ease, ease);
+}
+
+.gh-item a:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--border, #222222);
+    transform: translateX(3px);
+}
+
+.gh-item a:focus-visible {
+    outline: 2px solid var(--text-primary, #ffffff);
+    outline-offset: 2px;
+}
+
+.gh-repo {
+    font-family: var(--font-code, monospace);
+    font-size: 0.82rem;
+    color: var(--text-primary, #ffffff);
+    white-space: nowrap;
+}
+
+.gh-msg {
+    font-size: 0.92rem;
+    color: var(--text-secondary, #888888);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.gh-time {
+    font-family: var(--font-code, monospace);
+    font-size: 0.75rem;
+    color: #5c5c5c;
+    white-space: nowrap;
+}
+
+.gh-note {
+    font-size: 0.78rem;
+    color: #5c5c5c;
+    margin-top: 0.9rem;
+    line-height: 1.5;
+}
+
+/* ---------- Loading skeleton ---------- */
+.gh-skel {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.09) 37%, rgba(255, 255, 255, 0.04) 63%);
+    background-size: 400% 100%;
+    animation: ghShimmer 1.4s ease infinite;
+    border-radius: var(--radius-sm, 4px);
+}
+
+@keyframes ghShimmer {
+    0% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+.gh-loading {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.gh-loading .gh-skel:nth-child(1) {
+    height: 34px;
+    width: 45%;
+}
+
+.gh-loading .gh-skel:nth-child(2) {
+    height: 78px;
+}
+
+.gh-loading .gh-skel:nth-child(3) {
+    height: 118px;
+}
+
+/* ---------- Fallback / error state ---------- */
+.gh-fallback {
+    text-align: center;
+    padding: 1rem 0 0.25rem;
+}
+
+.gh-fallback p {
+    color: var(--text-secondary, #888888);
+    font-size: 0.95rem;
+    max-width: 460px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+}
+
+.gh-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
+    background: var(--text-primary, #ffffff);
+    color: var(--bg-main, #0a0a0a);
+    border-radius: var(--radius-sm, 4px);
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: transform 0.3s var(--ease, ease), box-shadow 0.3s ease;
+}
+
+.gh-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
+}
+
+.gh-btn svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+}
+
+/* Screen-reader-only helper */
+.gh-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .gh-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .gh-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .gh-stat-value {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gh-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.1rem;
+    }
+
+    .gh-item a {
+        grid-template-columns: minmax(0, 1fr) auto;
+        row-gap: 0.25rem;
+        transform: none !important;
+    }
+
+    .gh-repo {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .gh-time {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .gh-msg {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    /* Day-of-week gutter costs too much width on phones */
+    .gh-daycol {
+        display: none;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .gh-dot,
+    .gh-skel,
+    .gh-graph[data-anim="on"] .gh-cell {
+        animation: none !important;
+    }
+
+    .gh-graph[data-anim="on"] .gh-cell {
+        opacity: 1;
+    }
+
+    .gh-card,
+    .gh-stat,
+    .gh-item a,
+    .gh-cell,
+    .gh-btn,
+    .gh-profile,
+    .gh-tip {
+        transition: none !important;
+    }
+
+    .gh-item a:hover,
+    .gh-btn:hover {
+        transform: none;
+    }
+
+    .gh-scroll {
+        scroll-behavior: auto;
+    }
+}

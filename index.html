@@ -22,9 +22,13 @@
         content="Explore Levon Malkhasian's projects, experience, and contact information across web and embedded software engineering.">
     <meta name="twitter:image" content="https://levmalk.com/images/lm-logo.png">
     <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="src/tech-icons.css">
+    <link rel="stylesheet" href="src/github-activity.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -50,8 +54,24 @@
     <!-- Navbar -->
     <nav id="navbar">
         <div class="nav-items">
-            <a href="#" class="logo">
-                <img src="images/levsignature.png" alt="Signature Logo" class="signature-img">
+            <a href="#" class="logo" aria-label="Levon Malkhasian — home">
+                <svg class="sig-svg" viewBox="-30 -30 3740 1615" role="img"
+                    aria-label="Levon Malkhasian signature" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <!-- Glyph outlines of "L Malk" in Better Grade, converted to paths.
+                             Used only as a mask: the visible ink is the pen stroke below,
+                             clipped to these shapes. -->
+                        <clipPath id="sig-clip">
+                            <path d="M277 1367.2857142857142Q275 1372.2857142857142 275 1375.2857142857142Q271 1390.2857142857142 271 1394.2857142857142Q271 1397.2857142857142 270 1400.2857142857142Q262 1414.2857142857142 250 1414.2857142857142H245Q239 1413.2857142857142 234.0 1406.7857142857142Q229 1400.2857142857142 232 1386.2857142857142L235 1371.2857142857142Q200 1375.2857142857142 169 1378.2857142857142Q32 1393.2857142857142 23 1395.2857142857142H21Q13 1395.2857142857142 7.5 1390.2857142857142Q2 1385.2857142857142 1 1377.2857142857142Q0 1369.2857142857142 5.0 1362.7857142857142Q10 1356.2857142857142 18 1355.2857142857142Q27 1353.2857142857142 165 1338.2857142857142Q203 1334.2857142857142 245 1330.2857142857142Q254 1291.2857142857142 269 1229.2857142857142Q289 1156.2857142857142 349.5 978.2857142857142Q410 800.2857142857142 482.5 595.7857142857142Q555 391.2857142857142 610.0 238.78571428571422Q665 86.28571428571422 673 65.28571428571422Q676 57.28571428571422 683.0 53.78571428571422Q690 50.28571428571422 698 53.28571428571422Q706 56.28571428571422 709.5 63.28571428571422Q713 70.28571428571422 710 78.28571428571422Q706 89.28571428571422 652.0 239.28571428571422Q598 389.2857142857142 524.5 596.7857142857142Q451 804.2857142857142 389.0 985.2857142857142Q327 1166.2857142857142 308 1239.2857142857142Q295 1294.2857142857142 287 1326.2857142857142Q380 1317.2857142857142 493 1309.2857142857142Q683 1295.2857142857142 852 1297.2857142857142Q1077 1302.2857142857142 1129 1303.2857142857142H1165Q1167 1304.2857142857142 1169 1304.2857142857142H1171Q1191 1306.2857142857142 1191 1324.2857142857142Q1190 1332.2857142857142 1184.0 1338.2857142857142Q1178 1344.2857142857142 1170 1344.2857142857142Q1169 1344.2857142857142 1167.0 1344.2857142857142Q1165 1344.2857142857142 1160.0 1343.7857142857142Q1155 1343.2857142857142 1145.0 1343.2857142857142Q1135 1343.2857142857142 1119.0 1342.7857142857142Q1103 1342.2857142857142 1079.5 1341.7857142857142Q1056 1341.2857142857142 1023.5 1340.7857142857142Q991 1340.2857142857142 948.0 1339.2857142857142Q905 1338.2857142857142 851 1337.2857142857142Q684 1335.2857142857142 495 1349.2857142857142Q375 1358.2857142857142 277 1367.2857142857142Z M2142 1555.2857142857142Q2142 1555.2857142857142 2141 1555.2857142857142Q2133 1555.2857142857142 2127.5 1549.2857142857142Q2122 1543.2857142857142 2122 1534.2857142857142Q2121 1527.2857142857142 2137.5 1405.2857142857142Q2154 1283.2857142857142 2209 1067.2857142857142Q2271 853.2857142857142 2383 552.2857142857142Q2444 385.2857142857142 2492.5 242.78571428571422Q2541 100.28571428571422 2541 56.28571428571422Q2541 42.28571428571422 2539 40.28571428571422Q2533 40.28571428571422 2511.5 57.28571428571422Q2490 74.28571428571422 2452 119.28571428571422Q2381 204.28571428571422 2310 328.2857142857142Q2237 457.2857142857142 2111 699.2857142857142Q1978 954.2857142857142 1887.5 1118.7857142857142Q1797 1283.2857142857142 1764 1319.2857142857142Q1756 1326.2857142857142 1749.5 1328.2857142857142Q1743 1330.2857142857142 1738.5 1328.7857142857142Q1734 1327.2857142857142 1732 1326.2857142857142Q1710 1314.2857142857142 1725 1249.2857142857142Q1734 1203.2857142857142 1757 1118.2857142857142Q1801 950.2857142857142 1862 744.2857142857142Q1904 597.2857142857142 1938.0 474.7857142857142Q1972 352.2857142857142 1972 328.2857142857142Q1972 304.2857142857142 1970 299.2857142857142Q1964 302.2857142857142 1948.0 320.2857142857142Q1932 338.2857142857142 1902.0 382.2857142857142Q1872 426.2857142857142 1824 507.2857142857142Q1760 620.2857142857142 1696.5 761.2857142857142Q1633 902.2857142857142 1582 1024.2857142857142Q1500 1221.2857142857142 1483 1236.2857142857142Q1470 1247.2857142857142 1456 1240.2857142857142Q1445 1233.2857142857142 1447.0 1217.2857142857142Q1449 1201.2857142857142 1459 1166.2857142857142Q1473 1121.2857142857142 1500 1037.2857142857142Q1546 896.2857142857142 1630 651.2857142857142Q1702 442.2857142857142 1759.0 278.7857142857142Q1816 115.28571428571422 1823 95.28571428571422Q1823 94.28571428571422 1823 94.28571428571422Q1826 86.28571428571422 1833.5 82.78571428571422Q1841 79.28571428571422 1849 82.28571428571422Q1857 85.28571428571422 1860.5 92.28571428571422Q1864 99.28571428571422 1861 107.28571428571422Q1791 307.2857142857142 1712.5 534.7857142857142Q1634 762.2857142857142 1572 945.2857142857142Q1673 701.2857142857142 1790 487.2857142857142Q1860 365.2857142857142 1904 310.2857142857142Q1952 249.28571428571422 1982 259.2857142857142Q1997 263.2857142857142 2003.5 276.7857142857142Q2010 290.2857142857142 2011.0 304.7857142857142Q2012 319.2857142857142 2012 328.2857142857142Q2012 355.2857142857142 1982.5 464.7857142857142Q1953 574.2857142857142 1900 755.2857142857142Q1861 889.2857142857142 1822.0 1028.7857142857142Q1783 1168.2857142857142 1766 1249.2857142857142Q1818 1166.2857142857142 1904.0 1005.7857142857142Q1990 845.2857142857142 2076 680.2857142857142Q2202 438.2857142857142 2275 308.2857142857142Q2351 178.28571428571422 2425 89.28571428571422Q2462 45.28571428571422 2487.0 25.78571428571422Q2512 6.285714285714221 2527.0 2.2857142857142208Q2542 -1.7142857142857792 2551 1.2857142857142208Q2562 3.2857142857142208 2571.5 15.28571428571422Q2581 27.28571428571422 2581 56.28571428571422Q2581 105.28571428571422 2534.0 244.28571428571422Q2487 383.2857142857142 2421 566.2857142857142Q2309 866.2857142857142 2248 1077.2857142857142Q2193 1291.2857142857142 2177.0 1412.2857142857142Q2161 1533.2857142857142 2162 1536.2857142857142Q2162 1545.2857142857142 2156.0 1550.2857142857142Q2150 1555.2857142857142 2142 1555.2857142857142Z M2440 1066.2857142857142Q2430 1066.2857142857142 2422 1063.2857142857142Q2414 1060.2857142857142 2405.0 1047.7857142857142Q2396 1035.2857142857142 2396 1008.2857142857142Q2400 945.2857142857142 2449.5 864.7857142857142Q2499 784.2857142857142 2567 756.2857142857142Q2590 747.2857142857142 2620.0 751.7857142857142Q2650 756.2857142857142 2682 790.2857142857142Q2702 764.2857142857142 2714.0 747.2857142857142Q2726 730.2857142857142 2727 730.2857142857142Q2731 723.2857142857142 2738.5 721.7857142857142Q2746 720.2857142857142 2753 724.2857142857142Q2760 728.2857142857142 2762.0 735.2857142857142Q2764 742.2857142857142 2761 749.2857142857142Q2716 858.2857142857142 2713.5 913.2857142857142Q2711 968.2857142857142 2732 979.2857142857142Q2762 996.2857142857142 2831.5 953.7857142857142Q2901 911.2857142857142 2983 812.2857142857142Q2988 805.2857142857142 2996.0 804.2857142857142Q3004 803.2857142857142 3011 809.2857142857142Q3017 814.2857142857142 3018.0 822.2857142857142Q3019 830.2857142857142 3014 837.2857142857142Q2863 1018.2857142857142 2751 1024.2857142857142Q2728 1024.2857142857142 2711 1013.2857142857142Q2688 1002.2857142857142 2677.0 965.2857142857142Q2666 928.2857142857142 2683 854.2857142857142Q2633 918.2857142857142 2577 976.2857142857142Q2486 1067.2857142857142 2440 1066.2857142857142ZM2439 1026.2857142857142Q2439 1026.2857142857142 2439 1026.2857142857142Q2439 1026.2857142857142 2442.5 1026.2857142857142Q2446 1026.2857142857142 2454.0 1022.7857142857142Q2462 1019.2857142857142 2474.5 1011.2857142857142Q2487 1003.2857142857142 2505.0 987.7857142857142Q2523 972.2857142857142 2548 947.2857142857142Q2606 888.2857142857142 2657 822.2857142857142Q2655 820.2857142857142 2653 818.2857142857142Q2624 784.2857142857142 2589 791.2857142857142Q2544 803.2857142857142 2503.0 857.7857142857142Q2462 912.2857142857142 2443 972.2857142857142Q2435 1000.2857142857142 2436.0 1012.7857142857142Q2437 1025.2857142857142 2439 1026.2857142857142Q2439 1026.2857142857142 2439 1026.2857142857142Z M2914 1299.2857142857142Q2907 1299.2857142857142 2901 1294.2857142857142Q2896 1291.2857142857142 2890.0 1281.7857142857142Q2884 1272.2857142857142 2880.5 1249.7857142857142Q2877 1227.2857142857142 2881.0 1185.2857142857142Q2885 1143.2857142857142 2901 1075.2857142857142Q2925 976.2857142857142 2968 853.2857142857142L2986 804.2857142857142Q3009 743.2857142857142 3036 680.2857142857142Q3116 489.2857142857142 3167.5 390.2857142857142Q3219 291.2857142857142 3249.0 255.28571428571422Q3279 219.28571428571422 3297 215.28571428571422Q3312 210.28571428571422 3321.0 214.28571428571422Q3330 218.28571428571422 3333 222.28571428571422Q3354 242.28571428571422 3323 322.2857142857142Q3300 382.2857142857142 3254 473.2857142857142Q3209 558.2857142857142 3137.0 662.2857142857142Q3065 766.2857142857142 3022 823.2857142857142Q2967 969.2857142857142 2940 1085.2857142857142Q2932 1118.2857142857142 2927.5 1143.7857142857142Q2923 1169.2857142857142 2921.0 1188.2857142857142Q2919 1207.2857142857142 2919.0 1220.7857142857142Q2919 1234.2857142857142 2920.0 1242.7857142857142Q2921 1251.2857142857142 2922.5 1255.7857142857142Q2924 1260.2857142857142 2925.0 1261.7857142857142Q2926 1263.2857142857142 2927 1263.2857142857142Q2933 1269.2857142857142 2933.5 1277.2857142857142Q2934 1285.2857142857142 2929 1292.2857142857142Q2922 1299.2857142857142 2914 1299.2857142857142ZM3301 258.2857142857142Q3291 265.2857142857142 3273.0 289.7857142857142Q3255 314.2857142857142 3226 365.2857142857142Q3168 470.2857142857142 3084 667.2857142857142Q3167 550.2857142857142 3219 455.2857142857142Q3299 291.2857142857142 3301 258.2857142857142Z M3121 1147.2857142857142Q3117 1147.2857142857142 3113 1145.2857142857142Q3106 1142.2857142857142 3103.0 1135.2857142857142Q3100 1128.2857142857142 3102 1121.2857142857142Q3102 1121.2857142857142 3104.0 1116.2857142857142Q3106 1111.2857142857142 3111.0 1098.7857142857142Q3116 1086.2857142857142 3125.0 1063.2857142857142Q3134 1040.2857142857142 3149.0 1004.7857142857142Q3164 969.2857142857142 3186 918.2857142857142Q3218 842.2857142857142 3290 681.2857142857142L3299 662.2857142857142Q3339 574.2857142857142 3383 482.2857142857142Q3420 404.2857142857142 3448.0 349.2857142857142Q3476 294.2857142857142 3496.0 259.2857142857142Q3516 224.28571428571422 3529.0 203.78571428571422Q3542 183.28571428571422 3551.0 174.28571428571422Q3560 165.28571428571422 3565.0 162.28571428571422Q3570 159.28571428571422 3574 159.28571428571422Q3599 154.28571428571422 3612 172.28571428571422Q3631 206.28571428571422 3602.5 276.2857142857142Q3574 346.2857142857142 3541 402.2857142857142Q3492 485.2857142857142 3426.5 568.2857142857142Q3361 651.2857142857142 3333 684.2857142857142Q3280 802.2857142857142 3245 881.2857142857142Q3276 835.2857142857142 3304 801.2857142857142Q3403 687.2857142857142 3465 707.2857142857142Q3470 709.2857142857142 3475.5 714.7857142857142Q3481 720.2857142857142 3485.0 730.2857142857142Q3489 740.2857142857142 3486 757.2857142857142Q3476 805.2857142857142 3432.5 849.2857142857142Q3389 893.2857142857142 3340 907.2857142857142Q3311 914.2857142857142 3293 916.2857142857142Q3341 988.2857142857142 3392 994.2857142857142Q3444 998.2857142857142 3501.0 952.2857142857142Q3558 906.2857142857142 3619 841.2857142857142Q3619 841.2857142857142 3620 840.2857142857142Q3631 828.2857142857142 3643 816.2857142857142Q3650 810.2857142857142 3658.0 810.2857142857142Q3666 810.2857142857142 3672 816.2857142857142Q3678 822.2857142857142 3678.0 830.2857142857142Q3678 838.2857142857142 3672 844.2857142857142Q3660 856.2857142857142 3648 869.2857142857142Q3586 935.2857142857142 3525.5 983.7857142857142Q3465 1032.2857142857142 3403 1035.2857142857142Q3395 1035.2857142857142 3387 1034.2857142857142Q3317 1025.2857142857142 3258 935.2857142857142Q3227 984.2857142857142 3200.0 1029.7857142857142Q3173 1075.2857142857142 3156.5 1105.2857142857142Q3140 1135.2857142857142 3139 1137.2857142857142Q3132 1147.2857142857142 3121 1147.2857142857142ZM3445 743.2857142857142Q3434 743.2857142857142 3404.5 761.7857142857142Q3375 780.2857142857142 3335 827.2857142857142Q3317 848.2857142857142 3298 874.2857142857142Q3312 872.2857142857142 3331 868.2857142857142Q3368 858.2857142857142 3403.0 822.2857142857142Q3438 786.2857142857142 3447 750.2857142857142Q3447 745.2857142857142 3447 743.2857142857142Q3446 743.2857142857142 3445 743.2857142857142ZM3580 201.28571428571422Q3574 207.28571428571422 3556.0 235.28571428571422Q3538 263.2857142857142 3503.5 328.7857142857142Q3469 394.2857142857142 3413 512.2857142857142Q3408 523.2857142857142 3402 534.2857142857142Q3463 456.2857142857142 3506 382.2857142857142Q3549 306.2857142857142 3565.0 261.2857142857142Q3581 216.28571428571422 3580 201.28571428571422Z" />
+                        </clipPath>
+                    </defs>
+                    <!-- The "pen": a single thick stroke following the writing order of the
+                         letters. Animating its dash offset reveals the glyphs in the order a
+                         hand would actually draw them, rather than wiping across them. -->
+                    <g clip-path="url(#sig-clip)">
+                        <path class="sig-pen" pathLength="1" d="M 645 70 C 480 430, 300 900, 150 1330 C 110 1360, 80 1385, 60 1412 C 400 1392, 800 1362, 1180 1342 C 1280 1332, 1370 1330, 1430 1300 C 1560 900, 1700 450, 1810 175 C 1850 500, 1885 900, 1900 1150 C 1930 800, 1965 500, 1990 350 C 2150 250, 2350 120, 2500 45 C 2380 500, 2230 1100, 2120 1555 C 2250 1250, 2400 1000, 2560 880 C 2700 800, 2790 900, 2745 1010 C 2690 1095, 2555 1080, 2528 990 C 2500 900, 2605 805, 2720 800 C 2800 850, 2830 1000, 2870 1060 C 2950 800, 3050 400, 3130 210 C 3160 500, 3150 900, 3120 1180 C 3180 900, 3300 500, 3390 200 C 3420 500, 3412 850, 3400 1050 C 3480 950, 3560 850, 3640 800 C 3560 880, 3520 950, 3540 1010 C 3600 1080, 3660 1060, 3700 990" />
+                    </g>
+                </svg>
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -67,20 +87,23 @@
     <!-- Hero -->
     <section id="landing">
         <div class="home-hero">
-            <div class="hero-grid">
+            <div class="hero-grid">                    
                 <div class="hero-content">
-                    <span class="hero-greeting">Hey! I'm Lev.</span>
+                    <span class="hero-greeting">Hey! I'm Lev! <span class="wave-emoji">👋</span></span>
                     <h1>Building software<br>with a purpose.</h1>
                     <p>As a software engineer, I am passionate about creating accessible, user-centered products that
                         solve real-world problems.</p>
                     <div class="hero-tech-stack">
                         <span class="tech-label">Tech Stack</span>
                         <div class="tech-icons">
-                            <i class="fab fa-python" title="Python"></i>
-                            <i class="fab fa-js" title="JavaScript"></i>
-                            <i class="fab fa-github" title="GitHub"></i>
-                            <i class="fab fa-aws" title="AWS"></i>
-                            <i class="fab fa-docker" title="Docker"></i>
+                            <span class="tech-icon" data-tech="python" role="img" aria-label="Python"></span>
+                            <span class="tech-icon" data-tech="cpp" role="img" aria-label="C++"></span>
+                            <span class="tech-icon" data-tech="javascript" role="img" aria-label="JavaScript"></span>
+                            <span class="tech-icon" data-tech="react" role="img" aria-label="React"></span>
+                            <span class="tech-icon" data-tech="django" role="img" aria-label="Django"></span>
+                            <span class="tech-icon" data-tech="postgresql" role="img" aria-label="PostgreSQL"></span>
+                            <span class="tech-icon" data-tech="docker" role="img" aria-label="Docker"></span>
+                            <span class="tech-icon" data-tech="aws" role="img" aria-label="AWS"></span>
                         </div>
                     </div>
                 </div>
@@ -121,46 +144,88 @@
             <div class="section-header">
                 <h2 class="section-title">About Me</h2>
             </div>
-            <div class="bento-grid">
-                <div class="bento-card bio-card">
-                    <div class="bio-header">
-                        <h3>Hey, I'm Levon! <span class="wave-emoji">👋</span></h3>
-                    </div>
-                    <ul class="bio-list">
-                        <li>Senior CS student @ Cal Poly Pomona</li>
-                        <li>Looking to collaborate on open source projects</li>
-                        <li>When I'm not coding, I love playing golf and tennis</li>
-                        <li class="bio-email">📫 <a
-                                href="mailto:levonmalkhasian@gmail.com">levonmalkhasian@gmail.com</a></li>
+
+            <div class="about-layout">
+                <div class="about-intro">
+                    <ul class="about-bullets">
+                        <li>CS grad from <strong>Cal Poly Pomona</strong></li>
+                        <li>Looking to collaborate on projects to further my learning!</li>
+                        <li>When I'm not coding, I'm on a golf course or a tennis court</li>
+                        <li>I make (and drink) an unreasonable amount of coffee</li>
                     </ul>
+                    <a class="about-email" href="mailto:levonmalkhasian@gmail.com">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <span>levonmalkhasian@gmail.com</span>
+                    </a>
                 </div>
 
-                <div class="bento-card location-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Based in</h3>
-                    <p><strong>Los Angeles, CA</strong></p>
-                    <div id="la-time" class="live-clock">00:00:00 PST</div>
-                </div>
-
-                <div class="bento-card education-card">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Education</h3>
-                    <p><strong>Cal Poly Pomona</strong></p>
-                    <span>Computer Science, B.S. (26')</span>
-                </div>
+                <dl class="about-facts">
+                    <div class="fact">
+                        <dt>Based in</dt>
+                        <dd>Los Angeles, CA
+                            <span id="la-time" class="live-clock">00:00:00 PST</span>
+                        </dd>
+                    </div>
+                    <div class="fact">
+                        <dt>Education</dt>
+                        <dd>Cal Poly Pomona
+                            <span>B.S. Computer Science, May 2026</span>
+                            <span>GPA 3.8 &middot; Magna Cum Laude, President's & Dean's List</span>
+                        </dd>
+                    </div>
+                </dl>
             </div>
+        </div>
     </section>
 
     <!-- Experience -->
     <section id="experience">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Experience</h2>
+                <h2 class="section-title">Experience</h2><br>
             </div>
             <div class="timeline">
-                <!-- Timeline Item 1 -->
+                <!-- Timeline Item 1 — Glenair -->
                 <div class="timeline-item">
-                    <div class="timeline-date">Aug 2025 - Present</div>
+                    <img class="company-logo" src="assets/logos/glenair.svg" alt="Glenair logo" loading="lazy" width="104" height="26">
+
+                    <div class="timeline-date">Aug 2026 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Software Engineering Intern</h3>
+                        <h4>Glenair | Glendale, CA</h4>
+                        <ul>
+                            <li>Backend development with FastAPI, SQLAlchemy, and Microsoft SQL Server.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 — NASA JPL -->
+                <div class="timeline-item">
+                    <img class="company-logo" src="assets/logos/jpl.svg" alt="NASA Jet Propulsion Laboratory logo" loading="lazy" width="104" height="26">
+
+                    <div class="timeline-date">May 2026 – Aug 2026</div>
+                    <div class="timeline-content">
+                        <h3>Software Engineering Intern</h3>
+                        <h4>NASA Jet Propulsion Laboratory | Pasadena, CA</h4>
+                        <ul>
+                            <li>Designed and built TRACE, an end-to-end intake and approval system for Subcontract Work
+                                Orders (SWOs), integrating REST APIs with a custom SharePoint data architecture to replace a fully manual submission process.</li>
+                            <li>Implemented multi-step conditional approval logic with adaptive card-based routing,
+                                delivering each request directly to the individual approver's mailbox.</li>
+                            <li>Built SWO numbering logic supporting both a standard counter and a separate 800-series
+                                counter reserved for security-cleared work orders.</li>
+                            <li>Provisioned SharePoint folder structures programmatically via REST API, eliminating
+                                manual setup for every new work order.</li>
+                    
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <img class="company-logo" src="assets/logos/northrop.svg" alt="Northrop Grumman logo" loading="lazy" width="104" height="26">
+
+                    <div class="timeline-date">Aug 2025 – May 2026</div>
                     <div class="timeline-content">
                         <h3>Embedded Software Engineer</h3>
                         <h4>Northrop Grumman | Pomona, CA</h4>
@@ -179,28 +244,28 @@
                     </div>
                 </div>
 
-                <!-- Timeline Item 2 -->
+                <!-- Timeline Item 4 -->
                 <div class="timeline-item">
+                    <img class="company-logo" src="assets/logos/anthony.svg" alt="Anthony Media Group logo" loading="lazy" width="104" height="26">
+
                     <div class="timeline-date">July 2022 – Sep 2024</div>
                     <div class="timeline-content">
                         <h3>Full-Stack Web Developer</h3>
                         <h4>Anthony Media Group | Glendale, CA</h4>
                         <ul>
-                            <li>Built responsive web apps with HTML/CSS, JavaScript, & React, making mobile-friendly and
-                                optimized sites.</li>
-                            <li>Integrated RESTful APIs, optimized backend functionality, and improved average SEO
-                                performance by 112%.</li>
-                            <li>Collaborated closely with cross-functional teams in an Agile/Scrum environment to
-                                deliver client projects on time.</li>
-                            <li>Managed version control and code collaboration using Git and GitHub, ensuring smooth
-                                integration and deployment cycles. Also assisted with deployment and maintenance of web
-                                applications on AWS cloud services.</li>
+                            <li>Built responsive web apps with HTML/CSS, JavaScript, and React, making mobile-friendly
+                                and optimized sites.</li>
+                            <li>Improved average SEO performance by 112% through REST API integration and backend
+                                optimization (via Ahrefs).</li>
+                            <li>Assisted with deployment and maintenance of web applications on Vercel and AWS EC2 cloud
+                                services.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Timeline Item 3 -->
+                <!-- Timeline Item 5 -->
                 <div class="timeline-item">
+                    <img class="company-logo" src="assets/logos/autohaus24.png" alt="Autohaus24 logo" loading="lazy" width="150" height="30">
                     <div class="timeline-date">Mar 2022 – Aug 2023</div>
                     <div class="timeline-content">
                         <h3>Software Developer</h3>
@@ -219,6 +284,29 @@
         </div>
     </section>
 
+    <!-- GitHub Activity -->
+    <section id="github">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What I'm Building</h2>
+            </div>
+            <div class="gh-activity">
+                <div id="gh-activity" class="gh-card" data-gh-user="levmalkhasian" data-gh-weeks="53">
+                    <div class="gh-loading" aria-hidden="true">
+                        <div class="gh-skel"></div>
+                        <div class="gh-skel"></div>
+                        <div class="gh-skel"></div>
+                    </div>
+                    <noscript>
+                        <p>Live GitHub activity needs JavaScript. My work is public at
+                            <a href="https://github.com/levmalkhasian">github.com/levmalkhasian</a>.
+                        </p>
+                    </noscript>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects -->
     <section id="projects">
         <div class="container">
@@ -232,7 +320,7 @@
                         <i class="fas fa-spa folder-icon"></i>
                         <div class="project-links">
                             <a href="https://github.com/levmalkhasian/solace"><i class="fab fa-github"></i></a>
-                            <a href="https://solace.app"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://get-solace.app/"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                     <h3>Solace</h3>
@@ -310,10 +398,14 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
+                <h2 class="section-title">Let's Connect!</h2>
             </div>
             <div class="contact-wrapper">
                 <form class="contact-form" action="https://formspree.io/f/mnnezwzo" method="POST" autocomplete="on">
+                    <!-- Honeypot: hidden from humans, but bots that fill every field trip it
+                         and Formspree silently discards the submission. -->
+                    <input type="text" name="_gotcha" style="display:none !important" tabindex="-1"
+                        autocomplete="off" aria-hidden="true">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name">
@@ -349,12 +441,13 @@
                     <a href="https://linkedin.com/in/levonmalkhasian"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:levonmalkhasian@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
-                <p class="copyright">&copy; 2025 Levon Malkhasian. All rights reserved.</p>
+                <p class="copyright">&copy; 2026 Levon Malkhasian. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script src="src/script.js"></script>
+    <script src="src/github-activity.js" defer></script>
 </body>
 
 </html>
