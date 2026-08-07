@@ -2,7 +2,7 @@
 
 Personal portfolio site, live at **[levmalk.com](https://levmalk.com)**.
 
-Static HTML/CSS/vanilla JS with no build step and no dependencies — clone it and open
+Static HTML/CSS/vanilla JS with no build step and no dependencies.
 `index.html`.
 
 ## Tech
