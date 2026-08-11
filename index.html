@@ -21,9 +21,12 @@
     <meta name="twitter:description"
         content="Explore Levon Malkhasian's projects, experience, and contact information across web and embedded software engineering.">
     <meta name="twitter:image" content="https://levmalk.com/images/lm-logo.png">
-    <link rel="stylesheet" href="src/styles.css">
-    <link rel="stylesheet" href="src/tech-icons.css">
-    <link rel="stylesheet" href="src/github-activity.css">
+    <!-- ?v= busts the 10-minute GitHub Pages cache: without it a returning
+         visitor can load new markup against a stale stylesheet. Bump the date
+         whenever any of these files change. -->
+    <link rel="stylesheet" href="src/styles.css?v=2026-08-11">
+    <link rel="stylesheet" href="src/tech-icons.css?v=2026-08-11">
+    <link rel="stylesheet" href="src/github-activity.css?v=2026-08-11">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -427,8 +430,8 @@
         </div>
     </footer>
 
-    <script src="src/script.js"></script>
-    <script src="src/github-activity.js" defer></script>
+    <script src="src/script.js?v=2026-08-11"></script>
+    <script src="src/github-activity.js?v=2026-08-11" defer></script>
 </body>
 
 </html>
