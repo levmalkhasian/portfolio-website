@@ -663,3 +663,24 @@
         scroll-behavior: auto;
     }
 }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 768px) {
+
+    /* Widget labels sit at 11.2-11.5px, tight on a phone. The graph's own
+       axis labels (.gh-daycol span, .gh-month) are deliberately left alone —
+       they are locked to the cell grid and would widen it if enlarged. */
+    .gh-stat-label,
+    .gh-legend {
+        font-size: 0.8rem;
+    }
+
+    .gh-label {
+        font-size: 0.8rem;
+    }
+
+    /* The profile link measured 164x39 — just under the 44px touch minimum. */
+    .gh-profile {
+        min-height: 44px;
+    }
+}

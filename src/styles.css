@@ -105,15 +105,15 @@ body {
 }
 
 /* Animated signature — "L Malk" written by a pen, on a loop.
-   The glyph outlines (Better Grade, converted to SVG paths in index.html) are used
-   only as a clip mask. The visible ink is a single thick stroke that follows the
-   letters in real writing order; animating its dash offset reveals them the way a
-   hand would draw them, instead of wiping a straight edge across the word.
-   No webfont is loaded for this — the outlines are baked into the markup. */
+   The artwork and its animation live in assets/signature.svg (the glyph path
+   data is thousands of characters, so it is kept out of the markup) and are
+   pulled in here as an <img>. That file renders in its own document, so the
+   stroke and keyframes are defined inside it; only the box it sits in is
+   styled from here. No webfont is loaded for this — the outlines are baked
+   into the SVG. */
 .sig-svg {
     width: 100%;
     height: 100%;
-    overflow: visible;
     opacity: 0.9;
     transition: opacity 0.3s ease;
 }
@@ -122,56 +122,19 @@ body {
     opacity: 1;
 }
 
-.sig-pen {
-    fill: none;
-    stroke: var(--text-primary);
-    /* Wide enough to cover every glyph stroke it passes over. Measured: at 340 the
-       pen missed 3.8% of the glyph pixels (the tips of the M's peaks stayed dark);
-       500 covers 100% with the letter sequencing still reading one at a time. */
-    stroke-width: 500;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    /* pathLength="1" on the element normalises the path to 1 unit, so these are
-       fractions rather than px. If a browser ever ignores pathLength the stroke
-       would render as a hairline dotted line — the fix is to swap both values for
-       the pen path's real length, which measures 14513 user units. */
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: sig-write 7.5s ease-in-out infinite;
-}
-
-@keyframes sig-write {
-    0% {
-        stroke-dashoffset: 1;
-        opacity: 1;
-    }
-
-    45%,
-    86% {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-
-    96%,
-    100% {
-        stroke-dashoffset: 0;
-        opacity: 0;
-    }
-}
-
-/* Motion-sensitive visitors get the finished signature, no writing */
-@media (prefers-reduced-motion: reduce) {
-    .sig-pen {
-        animation: none;
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-}
-
 .nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
+}
+
+/* The Resume button brings its own 1.2rem of padding, which lands on top of
+   the flex gap: measured text-to-text it sat 44px from "Contact" against the
+   even 24px between the plain links, so it read as a hole in the row. Pulling
+   it back closes that to ~34px — still visibly more separated than the text
+   links, which a bordered CTA wants, without the gap reading as a mistake. */
+.nav-links li:last-child {
+    margin-left: -0.625rem;
 }
 
 .nav-links a {
@@ -402,6 +365,9 @@ body {
     line-height: 1.6;
     filter: none;
     -webkit-filter: none;
+    /* The snippet is white-space: pre and must not be allowed to widen the
+       layout — if it outgrows the window on a narrow screen it scrolls here. */
+    overflow-x: auto;
 }
 
 .window-body code {
@@ -493,10 +459,12 @@ section {
 ABOUT
 */
 /* ---------- ABOUT: plain type, no cards, no gradients ---------- */
+/* Columns are near-even: the fact list now carries a mark alongside its text
+   and needs the extra width to keep those lines from wrapping. */
 .about-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-    gap: 5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 4rem;
     align-items: start;
 }
 
@@ -570,8 +538,8 @@ ABOUT
 
 .fact {
     display: grid;
-    grid-template-columns: 108px 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 96px 1fr;
+    gap: 1.25rem;
     padding: 1.15rem 0;
     border-top: 1px solid var(--border);
 }
@@ -593,6 +561,55 @@ ABOUT
     color: var(--text-primary);
     font-size: 0.98rem;
     line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.1rem;
+}
+
+.fact-text {
+    min-width: 0;
+}
+
+/* Every fact row's marks sit in an identically sized slot, centred. The rows
+   hold different numbers of marks at different widths, so centring on a shared
+   slot is what puts each row's group on one vertical axis — right-aligning
+   them would line up their edges but throw their centres apart. The slot is
+   sized to the widest mark (the Cal Poly Pomona lockup). */
+.fact-marks {
+    flex: 0 0 148px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+}
+
+/* Same treatment as the timeline wordmarks — flattened to a flat white
+   silhouette. The marks are landscape lockups and a portrait monogram, so
+   they are matched on height rather than width. */
+.fact-logo {
+    flex-shrink: 0;
+    width: auto;
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+}
+
+/* A monogram reads smaller than a lockup at equal height, so it gets a
+   little back; the Lakers lockup carries fine detail and needs a little more
+   again to stay legible. */
+.fact-logo--la {
+    height: 34px;
+}
+
+.fact-logo--lakers {
+    height: 38px;
+}
+
+.fact:hover .fact-logo {
+    opacity: 0.9;
 }
 
 .fact dd span {
@@ -966,8 +983,15 @@ footer {
 
 
 @media (max-width: 900px) {
+    /* minmax(0, 1fr) rather than 1fr: a 1fr track's automatic minimum is
+       min-content, and the code window is white-space: pre, so its longest
+       line (~335px) set a floor the track could not go under. Below ~360px
+       viewports that pushed the whole hero — heading, copy, tech icons —
+       past the container, where overflow-x: hidden silently clipped it
+       instead of scrolling. Allowing the track to shrink past min-content
+       lets the code window scroll on its own instead. */
     .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 3rem;
         text-align: center;
         grid-template-rows: auto;
@@ -977,6 +1001,18 @@ footer {
     .about-layout {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    /* Fact rows get narrow — the marks drop below the text rather than
+       squeezing it. */
+    .fact dd {
+        flex-wrap: wrap;
+        gap: 0.9rem;
+    }
+
+    .fact-marks {
+        flex-basis: auto;
+        justify-content: flex-start;
     }
 
     /* Center Tech Stack */
@@ -997,6 +1033,12 @@ footer {
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* The drawer stacks vertically, so the desktop nudge before the CTA
+       doesn't apply here. */
+    .nav-links li:last-child {
+        margin-left: 0;
     }
 
     .nav-links {
@@ -1071,8 +1113,54 @@ footer {
     }
 
     .mobile-menu-btn {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 1001;
+        /* The glyph alone measured 21x29 — below the 44px touch minimum.
+           The negative margin keeps the icon optically flush with the
+           container edge while the box grows around it. */
+        min-width: 44px;
+        min-height: 44px;
+        margin-right: -0.6rem;
+    }
+
+    /* Icon-only links render at ~17-24px, well under the 44px touch minimum.
+       A centred pseudo-element grows the hit area without moving the icon;
+       the widened gaps keep neighbouring hit areas from overlapping. */
+    .project-links {
+        gap: 1.9rem;
+    }
+
+    .footer-social {
+        gap: 1.9rem;
+    }
+
+    .project-links a,
+    .footer-social a {
+        position: relative;
+    }
+
+    .project-links a::after,
+    .footer-social a::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 44px;
+        height: 44px;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Secondary labels sit at 11-11.5px, which is tight on a phone. The
+       contribution graph's own axis labels are left alone — they are chart
+       furniture locked to the cell grid, and grow it if enlarged. */
+    .fact dt {
+        font-size: 0.8rem;
+    }
+
+    .project-tech span {
+        font-size: 0.8rem;
     }
 }
 

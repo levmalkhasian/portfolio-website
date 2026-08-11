@@ -1,4 +1,4 @@
-# Search engines: fully welcome. This is a public portfolio — being findable is the point.
+# Search engines: fully welcome. This is a public portfolio, so being findable is the point.
 User-agent: *
 Allow: /
 
