@@ -185,14 +185,17 @@
                 <div class="timeline-item">
                     <img class="company-logo" src="assets/logos/glenair.svg" alt="Glenair logo" loading="lazy" width="104" height="26">
 
-                    <div class="timeline-date">Aug 2026 - Present</div>
+                    <div class="timeline-date">Aug 2026 - Oct 2026</div>
                     <div class="timeline-content">
                         <h3>Software Engineering Intern</h3>
                         <h4>Glenair | Glendale, CA</h4>
                         <ul>
-                            <li>Contributing to the migration of a legacy Business Basic system that the business depends on for core operations, moving it to a modern web application built on FastAPI, SQLAlchemy/SQLModel, and Microsoft SQL Server.</li>
-                            <li>Building REST APIs to support database migration from the legacy system to a new SQL Server architecture, enabling structured access to production data during the transition.</li>
-                            <li>Developing a web dashboard for the migration platform, giving users and admins the ability to filter, monitor, and execute commands against live migration data.</li>
+                            <li>CEngineered a full-stack platform for a multi-year migration of a legacy Business Basic system (6M+ items), saving
+                            an estimated 10 hours per month.</li>
+                            <li>Deployed the admin dashboard to production using React, Redux, and Material UI, now used daily by backend
+                            engineers to monitor real-time data, filter results, and run migration jobs.</li>
+                            <li>Built REST APIs with FastAPI and SQLModel, using RabbitMQ for asynchronous messaging to aggregate data
+                            and keep the legacy system and new environment in sync bidirectionally.</li>
                         </ul>
                     </div>
                 </div>
@@ -206,9 +209,12 @@
                         <h3>Software Engineering Intern</h3>
                         <h4>NASA Jet Propulsion Laboratory | Pasadena, CA</h4>
                         <ul>
-                            <li>Designed and built TRACE, a workflow automation system that replaced third-party licensed tools for Subcontract Work Order intake and approval routing, saving JPL over $30K in annual licensing costs across sponsor companies.</li>
-                            <li>Idefined system requirements and approval logic through recurring stakeholder interviews across four sponsor companies, translating conflicting workflow needs into a unified approval architecture.</li>
-                            <li>Presented final system design and impact to engineering leadership via a 14-slide technical presentation and detailed report, documenting architecture decisions and measured cost savings.</li>
+                            <li>Designed and built TRACE, a workflow automation system that replaced third-party licensed tools for Subcontract
+                            Work Order intake and approval routing, saving JPL over $30K in annual licensing costs across sponsor companies.</li>
+                            <li>Defined system requirements and approval logic through recurring stakeholder interviews across four sponsor
+                            companies, translating conflicting workflow needs into a unified approval architecture.</li>
+                            <li>Presented final system design and impact to engineering leadership via a 14-slide technical presentation and
+                            detailed report, documenting architecture decisions and measured cost savings.</li>
                         </ul>
                     </div>
                 </div>
@@ -222,11 +228,12 @@
                         <h3>Embedded Software Engineer</h3>
                         <h4>Northrop Grumman | Pomona, CA</h4>
                         <ul>
-                            <li>Developed ROS2 publisher/subscriber nodes in Python/C++ for an autonomous unmanned ground vehicle (UGV) as part of the Northrop Grumman Collaboration Project (NGCP) at Cal Poly Pomona.</li>
-                            <li>Integrated subsystems using the built-in ROS2 DDS middleware to enable real time and accurate communication.</li>
-                            <li>Collaborated closely with cross teams including Ground Control Systems (GCS), Mechanical, and Electrical for seamless integration of software and hardware components.
-                            </li>
-                            <li>Tested and debugged code in simulations and on embedded platforms, such as Nvidia Jetson and Raspberry Pi.</li>
+                            <li>Developed ROS2 publisher/subscriber nodes in Python/C++ for an autonomous ground vehicle as part of the
+                            Northrop Grumman Collaboration Project at Cal Poly Pomona.</li>
+                            <li>Integrated an Xsens MTi-680 GNSS/INS sensor with RTK corrections (NTRIP) for centimeter-level positioning.</li>
+                            <li>Owned the manual control system, replacing a wired controller with long-range ELRS wireless control (2+ miles)
+                            for reliable autonomous-to-manual switching.</li>
+                            <li>Worked with ground control, mechanical, and electrical teams; demoed the rover to Northrop representatives.</li>
                         </ul>
                     </div>
                 </div>
@@ -240,9 +247,9 @@
                         <h3>Full-Stack Web Developer</h3>
                         <h4>Anthony Media Group | Glendale, CA</h4>
                         <ul>
-                            <li>Built responsive web apps with HTML/CSS, JavaScript, and React, making mobile-friendly and optimized sites.</li>
-                            <li>Improved average SEO performance by 112% through REST API integration and backend optimization (via Ahrefs).</li>
-                            <li>Assisted with deployment and maintenance of web applications on Vercel and AWS EC2 cloud services.</li>
+                            <li>Built responsive web apps with JavaScript and React for client businesses, making mobile-friendly, optimized sites.</li>
+                            <li>Improved average SEO performance by 112% through REST API integration and backend optimization (measured
+                            via Ahrefs), deploying and maintaining applications on Vercel and AWS EC2.</li>
                         </ul>
                     </div>
                 </div>
@@ -313,8 +320,6 @@
                     <div class="project-tech">
                         <span>Swift</span>
                         <span>SwiftUI</span>
-                        <span>Kotlin</span>
-                        <span>Jetpack Compose</span>
                     </div>
                 </div>
 
@@ -337,7 +342,28 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Habitatly -->
+                <!-- Project 3: Fullstack Template -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <i class="fas fa-layer-group folder-icon"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/levmalkhasian/fullstack-template"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3>Fullstack Template</h3>
+                    <p>Reusable starter monorepo for fullstack apps with a FastAPI backend, PostgreSQL and an isolated
+                        React/Typescript frontend, with uv, Ruff, and Prettier set up for consistent tooling.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>PostgreSQL</span>
+                        <span>SQLAlchemy</span>
+                        <span>Typescript</span>
+                        <span>React</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Habitatly -->
                 <div class="project-card">
                     <div class="project-header">
                         <i class="fas fa-city folder-icon"></i>
@@ -347,35 +373,14 @@
                         </div>
                     </div>
                     <h3>Habitatly</h3>
-                    <p>Personal city recommendation engine that ranks 500+ cities based on weighted user preferences like cost of living, weather, and safety.</p>
+                    <p>Personal city recommendation engine w/ AI that ranks 500+ cities based on weighted user preferences like cost of living, weather, and safety.</p>
                     <div class="project-tech">
                         <span>Python</span>
                         <span>Flask</span>
                         <span>MongoDB</span>
-                        <span>Leaflet.js</span>
-                    </div>
-                </div>
-
-                <!-- Project 4: Journaling App -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <i class="fas fa-book folder-icon"></i>
-                        <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                    </div>
-                    <h3>Journaling Web App</h3>
-                    <p>Full-stack journaling platform featuring user authentication, partial templates, and a relational
-                        database foundation.</p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>Flask</span>
-                        <span>MySQL</span>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Contact -->
